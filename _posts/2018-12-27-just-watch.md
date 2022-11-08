@@ -1,0 +1,6 @@
+---
+layout: post
+title: "Just Watch"
+date: 2018-12-27
+img: "https://photos.lifeclips.org/images/just-watch.jpg"
+---

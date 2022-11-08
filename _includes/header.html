@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{{ site.title }}</title>
+        <link rel="icon" href="/assets/rainbow.png" />
+        <link type="text/css" rel="stylesheet" href="/assets/style.css" />
+        <link type="text/css" rel="stylesheet" href="/assets/lightbox.min.css" />
+        <script type="text/javascript" src="/assets/lightbox-plus-jquery.min.js"></script>
+        <script type="text/javascript">
+            const imgs = document.getElementsByClassName("post-img");
+            const titles = document.getElementsByClassName("post-title");
+            const viewHeight = window.innerHeight || document.documentElement.clientHeight;
+            let num = 0;
+
+            function lazyload() {
+                for (let i = num; i < imgs.length; i++) {
+                    let distance = viewHeight - imgs[i].getBoundingClientRect().top;
+                    if (distance >= 0) {
+                        imgs[i].src = imgs[i].getAttribute("data-src");
+                        titles[i].style.display = "block";
+                        num = i + 1;
+                    }
+                }
+            }
+
+            function debounce(fn, delay = 500) {
+                let timer = null;
+                return function (...args) {
+                    if (timer) clearTimeout(timer);
+                    timer = setTimeout(() => {
+                        fn.call(this, args);
+                    }, delay);
+                };
+            }
+
+            window.onload = lazyload;
+            window.addEventListener("scroll", debounce(lazyload, 600), false);
+
+            lightbox.option({
+                resizeDuration: 200,
+                wrapAround: true,
+                albumLabel: "%1 of %2",
+                disableScrolling: true,
+            });
+        </script>
+    </head>
+
+    <body>

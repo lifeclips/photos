@@ -4,9 +4,9 @@
     <div class="container">
         {% for post in site.posts %}
         <div class="post">
-            <a href="{{ post.img }}" data-lightbox="photos" data-title="{{ post.alt }} ⧉ {{ post.date | date: '%b %d, %Y' }}">
+            <a href="{{ post.img }}" data-lightbox="photos" data-title="{{ post.title }} {{ post.alt }} ⧉ {{ post.date | date: '%b %d, %Y' }}">
                 <img class="post-img" src="/assets/placeholder.png" data-src="{{ post.img }}" />
-                <p class="post-title">{{ post.title }}</p>
+                <!-- <p class="post-title">{{ post.title }}</p> -->
             </a>
         </div>
         {% endfor %}

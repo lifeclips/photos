@@ -10,7 +10,7 @@
         <script type="text/javascript" src="/assets/lightbox-plus-jquery.min.js"></script>
         <script type="text/javascript">
             const imgs = document.getElementsByClassName("post-img");
-            const titles = document.getElementsByClassName("post-title");
+            /* const titles = document.getElementsByClassName("post-title"); */
             const viewHeight = window.innerHeight || document.documentElement.clientHeight;
             let num = 0;
 
@@ -19,7 +19,7 @@
                     let distance = viewHeight - imgs[i].getBoundingClientRect().top;
                     if (distance >= 0) {
                         imgs[i].src = imgs[i].getAttribute("data-src");
-                        titles[i].style.display = "block";
+                       /* titles[i].style.display = "block"; */
                         num = i + 1;
                     }
                 }
